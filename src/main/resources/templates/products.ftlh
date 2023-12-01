@@ -10,6 +10,13 @@
 <body>
 <h1>TRADEIN</h1>
 <h4>Товары со всей Украины</h4>
+<form action="" method="get">
+    <label for="title" content="Поиск по названию обьявления:">
+        <input type="text" name="title">
+    </label>
+    <input type="submit" value="Поиск">
+</form>
+
 <#list products as product>
     <div>
         <p>
@@ -21,12 +28,16 @@
     </div>
 </#list>
 <h3>Создать новый товар</h3>
-<form action="/product/create" method="post">
+<#--enctype-multipart/form-data  - формочка помимо полей может передать файловый тип-->
+<form action="/product/create" method="post" enctype="multipart/form-data">
     Название обьявления: <input type="text" name="title"><br>
     Описание обьявления: <input type="text" name="description"><br>
     Цена: <input type="number" name="price"><br>
     Город: <input type="text" name="city"><br>
     Имя: <input type="text" name="author"><br>
+    Первое фото: <input type="file" name="author"><br>
+    Второе фото: <input type="file" name="author"><br>
+    Третье фото: <input type="file" name="author"><br>
     <input type="submit" value="Добавить товар"/>
 </form>
 </body>

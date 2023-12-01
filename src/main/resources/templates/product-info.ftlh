@@ -10,6 +10,12 @@
 <body>
 <h1>TRADEIN</h1>
 <h4>Подробная информация о товаре</h4>
+
+<#list images as img>
+    <img src="/images/${img.id}" height="60px" alt="img">
+
+</#list>
+
 <b>Название товара : </b> ${product.title} <br>
 <b>Описание товара: </b>${product.description} <br>
 <b>Цена:</b> ${product.price}
