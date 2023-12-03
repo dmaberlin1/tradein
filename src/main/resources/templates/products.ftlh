@@ -17,8 +17,12 @@
         <input type="hidden" name="_crsf" value="${_csrf.token}">
         <input type="submit" value="Выйти">
     </form>
-    <#else >
-        <a href="/login">Войти</a>
+
+    <#if user.isAdmin()>
+        <a href="/admin">Admin Panel</a>
+    </#if>
+<#else>
+    <a href="/login">Войти</a>
 </#if>
 <hr>
 <h4>Товары со всей Украины</h4>
