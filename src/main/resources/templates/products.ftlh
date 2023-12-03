@@ -8,7 +8,19 @@
     <title>TRADEIN</title>
 </head>
 <body>
-<h1>TRADEIN</h1>
+<h1>TRADEIN </h1>
+<hr>
+
+<#if user.email??>
+    <h3>Имя пользователя: <i>${user.name}</i></h3>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_crsf" value="${_csrf.token}">
+        <input type="submit" value="Выйти">
+    </form>
+    <#else >
+        <a href="/login">Войти</a>
+</#if>
+<hr>
 <h4>Товары со всей Украины</h4>
 <form action="" method="get">
     <label for="title" content="Поиск по названию обьявления:">
@@ -27,18 +39,23 @@
         </p>
     </div>
 </#list>
-<h3>Создать новый товар</h3>
+
+<#if user.email??>
+
+    <hr>
+    <h3>Создать новый товар</h3>
 <#--enctype-multipart/form-data  - формочка помимо полей может передать файловый тип-->
-<form action="/product/create" method="post" enctype="multipart/form-data">
-    Название обьявления: <input type="text" name="title"><br>
-    Описание обьявления: <input type="text" name="description"><br>
-    Цена: <input type="number" name="price"><br>
-    Город: <input type="text" name="city"><br>
-    Имя: <input type="text" name="author"><br>
-    Первое фото: <input type="file" name="author"><br>
-    Второе фото: <input type="file" name="author"><br>
-    Третье фото: <input type="file" name="author"><br>
-    <input type="submit" value="Добавить товар"/>
-</form>
+    <form action="/product/create" method="post" enctype="multipart/form-data">
+        Название обьявления: <input type="text" name="title"><br>
+        Описание обьявления: <input type="text" name="description"><br>
+        Цена: <input type="number" name="price"><br>
+        Город: <input type="text" name="city"><br>
+        Первое фото: <input type="file" name="author"><br>
+        Второе фото: <input type="file" name="author"><br>
+        Третье фото: <input type="file" name="author"><br>
+        <input type="hidden" name="_csrf" value="${_csrf.token}">
+        <input type="submit" value="Добавить товар"/>
+    </form>
+</#if>
 </body>
 </html>
